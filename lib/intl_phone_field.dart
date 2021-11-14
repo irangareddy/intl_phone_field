@@ -276,8 +276,19 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
               children: <Widget>[
                 TextField(
                   decoration: InputDecoration(
-                    suffixIcon: Icon(Icons.search),
+                    suffixIcon: Icon(Icons.search,
+                    color: Color(0xFF0D6DDF)),
                     labelText: widget.searchText,
+                    labelStyle: TextStyle(
+                      color: Color(0xFF7A7A7A),
+                      fontWeight: FontWeight.normal,
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF7A7A7A)),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF0D6DDF)),
+                    ),
                   ),
                   onChanged: (value) {
                     filteredCountries = this.widget.dialCodeSearch && isNumeric(value)
@@ -301,11 +312,11 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
                           ),
                           title: Text(
                             filteredCountries[index].name,
-                            style: TextStyle(fontWeight: FontWeight.w700),
+                            style: TextStyle(fontWeight: FontWeight.normal),
                           ),
                           trailing: Text(
                             '+${filteredCountries[index].dialCode}',
-                            style: TextStyle(fontWeight: FontWeight.w700),
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           onTap: () {
                             _selectedCountry = filteredCountries[index];
@@ -347,7 +358,16 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
       focusNode: widget.focusNode,
       onFieldSubmitted: widget.onSubmitted,
       decoration: widget.decoration.copyWith(
-        prefix: _buildFlagsButton(),
+        prefixIcon: Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width*0.35,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: _buildFlagsButton(),
+                ),
+              ),
+            ),
         counterText: !widget.enabled ? '' : null,
       ),
       style: widget.style,
