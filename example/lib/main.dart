@@ -53,10 +53,25 @@ class _MyAppState extends State<MyApp> {
                 ),
                 IntlPhoneField(
                   decoration: InputDecoration(
-                    labelText: 'Phone Number',
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(),
+                    labelStyle: const TextStyle(fontSize: 18),
+                    hintStyle:
+                        const TextStyle(fontSize: 18, color: Color(0x66262626)),
+                    hintText: '999 999 999',
+                    fillColor: Color(0xFF000000),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xFF000000), width: 1.0),
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderSide: BorderSide(
+                        width: 1.0,
+                        color: Color(0XffC4C4C4), //
+                        style: BorderStyle.none,
+                      ),
+                    ),
+                    contentPadding: const EdgeInsets.all(16),
                   ),
                   onChanged: (phone) {
                     print(phone.completeNumber);
